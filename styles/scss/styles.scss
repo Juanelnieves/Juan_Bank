@@ -31,3 +31,39 @@ $color-grey-40: #656567;
 $color-grey-60: #98989A;
 $color-grey-70: #B3B3B3;
 $color-grey-75: #BFBFBF;
+
+.sidebar {
+    width: 280px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding-top: 48px;
+    overflow-x: hidden;
+    overflow-y: auto; // Scrollable contents if viewport is shorter than content.
+    transition: all 0.3s;
+  
+    &.collapsed {
+      width: 0;
+      overflow: hidden;
+    }
+  }
+  
+  .main-content {
+    margin-left: 280px;
+    transition: margin-left 0.3s;
+  
+    &.full-width {
+      margin-left: 0;
+    }
+  }
+  
+  #sidebarToggle {
+    position: fixed;
+    z-index: 102; // Above sidebar
+    left: 280px;
+    top: 10px;
+    transition: left 0.3s;
+  }
+  
