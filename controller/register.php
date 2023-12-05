@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("ssss", $nombre, $apellido, $email, $passwordHash);
             if ($stmt->execute()) {
                 // Registro exitoso, redirigir al login
-                header("Location: ../view/login.html"); 
+                header("Location: ../view/login.php"); 
                 exit();
             } else {
                 echo "Algo salió mal al intentar registrar el usuario.";
