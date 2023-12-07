@@ -16,23 +16,6 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-body {
-  font-family: "Poppins", sans-serif;
-  width: 100vw;
-  height: 100vh;
-  background: #fbfcff;
-  padding: 24px;
-  margin: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
 
 #highlight {
   position: absolute;
@@ -76,7 +59,7 @@ body {
   display: none;
 }
 
-.card {
+.credit_card {
   position: relative;
   max-width: 420px;
   margin: 0 auto;
@@ -88,14 +71,14 @@ body {
   -webkit-transition: 1s;
   transition: 1s;
 }
-.card:hover, .card.flip {
+.credit_card:hover, .credit_card.flip {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
-.card:hover #highlight {
+.credit_card:hover #highlight {
   display: none;
 }
-.card__front, .card__back {
+.credit_card__front, .credit_card__back {
   width: 100%;
   max-width: 420px;
   height: 233px;
@@ -111,7 +94,7 @@ body {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
-.card__front:before, .card__back:before {
+.credit_card__front:before, .credit_card__back:before {
   content: "";
   position: absolute;
   border: 16px solid #ff6be7;
@@ -123,7 +106,7 @@ body {
   -webkit-filter: blur(13px);
           filter: blur(13px);
 }
-.card__front:after, .card__back:after {
+.credit_card__front:after, .credit_card__back:after {
   content: "";
   position: absolute;
   border: 16px solid #7288ff;
@@ -135,7 +118,7 @@ body {
   -webkit-filter: blur(13px);
           filter: blur(13px);
 }
-.card__back {
+.credit_card__back {
   position: absolute;
   top: 0;
   left: 0;
@@ -143,17 +126,17 @@ body {
           transform: rotateY(180deg);
   padding: 24px 0 0;
 }
-.card__front {
+.credit_card__front {
   position: relative;
 }
 @media (max-width: 450px) {
-  .card__front, .card__back {
+  .credit_card__front, .credit_card__back {
     padding: 8px 12px 16px;
     height: 206px;
   }
 }
 
-.card__hide_line {
+.credit_card__hide_line {
   height: 40px;
   width: 100%;
   background-color: #6b7280;
@@ -161,7 +144,7 @@ body {
   z-index: 1;
 }
 
-.card_cvv {
+.credit_card_cvv {
   position: relative;
   z-index: 1;
   margin-top: 24px;
@@ -181,7 +164,7 @@ body {
   text-transform: uppercase;
 }
 
-.card_cvv_field {
+.credit_card_cvv_field {
   margin-top: 6px;
   background-color: #fff;
   border-radius: 12px;
@@ -202,7 +185,7 @@ body {
   line-height: 21px;
 }
 
-.card__header {
+.credit_card__header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -218,7 +201,7 @@ body {
   z-index: 1;
 }
 
-.card__number {
+.credit_card__number {
   font-size: 22px;
   margin-bottom: 32px;
   position: relative;
@@ -229,7 +212,7 @@ body {
   height: 33px;
   overflow: hidden;
 }
-.card__number span {
+.credit_card__number span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -240,15 +223,15 @@ body {
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
-.card__number span.filed {
+.credit_card__number span.filed {
   -webkit-transform: translateY(-33px);
           transform: translateY(-33px);
 }
-.card__number span:nth-child(4n) {
+.credit_card__number span:nth-child(4n) {
   margin-right: 10px;
 }
 
-.card__footer {
+.credit_card__footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -262,11 +245,11 @@ body {
   z-index: 1;
 }
 
-.card__holder {
+.credit_card__holder {
   text-transform: uppercase;
 }
 
-.card__section__title {
+.credit_card__section__title {
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
