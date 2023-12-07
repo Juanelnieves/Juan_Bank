@@ -1,0 +1,339 @@
+// Variables
+$font-family: 'Poppins', sans-serif;
+$primary-color: #000;
+$background-color: #242424;
+$highlight-border-color: #fff;
+$card-background: linear-gradient(to right bottom, #323941, #061018);
+$card-shadow: 0 33px 50px -15px rgba(50,55,63,.66);
+$card-color: #fff;
+$highlight-shadow: 0 0 5px #fff;
+$blur-color-1: #ff6be7;
+$blur-color-2: #7288ff;
+$hide-line-bg: #6b7280;
+$cvv-bg: #fff;
+$cvv-color: #000;
+$text-transform-uppercase: uppercase;
+$border-radius-large: 20px;
+$border-radius-medium: 12px;
+$font-size-large: 22px;
+$font-size-medium: 14px;
+$font-size-small: 16px;
+$font-weight-normal: 400;
+$font-weight-bold: 600;
+$form-bg: #fff;
+$form-border: 1px solid #f1f1f1;
+$form-shadow: 0 0 40px rgba(50,55,63,.16);
+$input-color: #0d0c22;
+$input-border: 1px solid #6b7280;
+$input-focus-border: 1px solid #000;   
+$input-focus-outline: 4px solid rgba(0,0,0,.1);
+$transition-normal: 0.3s;
+$transition-fast: 0.2s;
+$transition-slow: 1s;
+$media-breakpoint: 450px;
+
+// Mixins
+@mixin box-shadow($shadow) {
+  box-shadow: $shadow;
+}
+
+@mixin transform-style($style) {
+  transform-style: $style;
+  -webkit-transform-style: $style;
+  -moz-transform-style: $style;
+  -ms-transform-style: $style;
+  -o-transform-style: $style;
+}
+
+@mixin blur-effect($color, $left, $top, $width, $height) {
+  content: "";
+  position: absolute;
+  border: 16px solid $color;
+  border-radius: 100%;
+  left: $left;
+  top: $top;
+  height: $height;
+  width: $width;
+  filter: blur(13px);
+}
+
+// Base Styles
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $font-family;
+  line-height: 1.5;
+  font-weight: $font-weight-normal;
+  color-scheme: $primary-color;
+  background-color: $background-color;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: $font-family;
+  width: 100vw;
+  height: 100vh;
+  background: #fbfcff;
+  padding: 24px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Highlight Styles
+#highlight {
+  position: absolute;
+  border: 1px solid $highlight-border-color;
+  border-radius: $border-radius-medium;
+  z-index: 1;
+  width: 0;
+  height: 0;
+  top: 0;
+  left: 0;
+  @include box-shadow($highlight-shadow);
+  transition: $transition-normal;
+
+  &.highlight__number {
+    width: 346px;
+    height: 40px;
+    top: 92px;
+    left: 18px;
+  }
+
+  &.highlight__holder {
+    width: 264px;
+    height: 56px;
+    top: 156px;
+    left: 18px;
+  }
+
+  &.highlight__expire {
+    width: 86px;
+    height: 56px;
+    top: 156px;
+    left: 323px;
+  }
+
+  &.highlight__cvv {
+    width: 381px;
+    height: 91px;
+    top: 83px;
+    left: 18px;
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
+
+// Card Styles
+.card {
+  position: relative;
+  max-width: 420px;
+  margin: 0 auto;
+  @include transform-style(preserve-3d);
+  transition: $transition-slow;
+
+  &:hover,
+  &.flip {
+    transform: rotateY(180deg);
+  }
+
+  &:hover #highlight {
+    display: none;
+  }
+
+  &__front,
+  &__back {
+    width: 100%;
+    max-width: 420px;
+    height: 233px;
+    border-radius: $border-radius-large;
+    padding: 24px 30px 30px;
+    background: $card-background;
+    @include box-shadow($card-shadow);
+    color: $card-color;
+    overflow: hidden;
+    margin: 0 auto;
+    backface-visibility: hidden;
+
+    &:before {
+      @include blur-effect($blur-color-1, -17%, -45px, 300px, 300px);
+    }
+
+    &:after {
+      @include blur-effect($blur-color-2, -200px, 55%, 300px, 300px);
+    }
+  }
+
+  &__back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateY(180deg);
+    padding: 24px 0 0;
+  }
+
+  &__front {
+    position: relative;
+  }
+
+  // Media Query for Card
+  @media (max-width: $media-breakpoint) {
+    &__front,
+    &__back {
+      padding: 8px 12px 16px;
+      height: 206px;
+    }
+  }
+}
+
+.card__hide_line {
+    height: 40px;
+    width: 100%;
+    background-color: $hide-line-bg;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .card_cvv {
+    position: relative;
+    z-index: 1;
+    margin-top: 24px;
+    padding: 0 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    font-size: $font-size-medium;
+    font-weight: $font-weight-bold;
+    text-transform: $text-transform-uppercase;
+  }
+  
+  .card_cvv_field {
+    margin-top: 6px;
+    background-color: $cvv-bg;
+    border-radius: $border-radius-medium;
+    height: 44px;
+    width: 100%;
+    color: $cvv-color;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 0 12px;
+    font-size: $font-size-large;
+    line-height: 21px;
+  }
+  
+  .card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: $font-weight-bold;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .card__number {
+    font-size: $font-size-large;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    height: 33px;
+    overflow: hidden;
+  
+    span {
+      display: flex;
+      flex-direction: column;
+      transition: $transition-fast;
+  
+      &.filed { 
+        transform: translateY(-33px);
+      }
+    }
+  
+    span:nth-child(4n) {
+      margin-right: 10px;
+    }
+  }
+  
+  .card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .card__holder {
+    text-transform: $text-transform-uppercase;
+  }
+  
+  .card__section__title {
+    font-size: $font-size-medium;
+    font-weight: $font-weight-bold;
+    text-transform: $text-transform-uppercase;
+  }
+  
+  .form {
+    border-radius: $border-radius-medium;
+    background: $form-bg;
+    max-width: 600px;
+    margin: -130px auto 0;
+    padding: 180px 32px 32px;
+    border: $form-border;
+    @include box-shadow($form-shadow);
+    display: grid;
+    gap: 12px;
+  }
+  
+  label {
+    display: block;
+    margin: 14px 0 4px;
+    color: $input-color;
+    font-weight: $font-weight-normal;
+  }
+  
+  input, select {
+    height: 52px;
+    display: block;
+    width: 100%;
+    border: $input-border;
+    padding: 18px 20px;
+    transition: outline $transition-normal, box-shadow $transition-normal;
+    border-radius: $border-radius-medium;
+    outline: none;
+    background-color: $form-bg;
+    color: $input-color;
+    font-size: $font-size-small;
+  
+    &:focus {
+      border: $input-focus-border;   
+      outline: $input-focus-outline;
+    }
+  }
+  
+  select {
+    padding: 0 20px;
+  }
+  
+  .filed__group {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+  }
+  
+  .filed__date {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  
