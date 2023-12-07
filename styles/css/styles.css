@@ -11,10 +11,7 @@
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-.sidebar.collapsed {
-  width: 0;
-  overflow: hidden;
-}
+
 
 .main-content {
   margin-left: 280px;

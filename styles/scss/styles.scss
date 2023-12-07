@@ -43,11 +43,6 @@ $color-grey-75: #BFBFBF;
     overflow-x: hidden;
     overflow-y: auto; // Scrollable contents if viewport is shorter than content.
     transition: all 0.3s;
-  
-    &.collapsed {
-      width: 0;
-      overflow: hidden;
-    }
   }
   
   .main-content {

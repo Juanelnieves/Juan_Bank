@@ -1,12 +1,33 @@
-document.getElementById('sidebarToggle').addEventListener('click', function() {
-    var sidebar = document.getElementById('sidebar');
-    var mainContent = document.getElementById('mainContent');
-    var sidebarToggle = document.getElementById('sidebarToggle');
-    sidebar.classList.toggle('collapsed');
-    mainContent.classList.toggle('full-width');
-    if (sidebar.classList.contains('collapsed')) {
-      sidebarToggle.style.left = '0';
-    } else {
-      sidebarToggle.style.left = '280px';
-    }
+document.addEventListener('DOMContentLoaded', function() {
+  const addForm = document.getElementById('addForm');
+  const withdrawForm = document.getElementById('withdrawForm');
+
+  const handleResponse = (data) => {
+      alert(data.message); // Aquí puedes reemplazar esto por un modal personalizado
+      if (data.status === 'success') {
+          location.reload(); // O actualiza los componentes necesarios de tu página
+      }
+  };
+
+  addForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(addForm);
+      fetch('../controller/añadir_saldo.php', {
+          method: 'POST',
+          body: formData
+      })
+      .then(response => response.json())
+      .then(handleResponse);
   });
+
+  withdrawForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(withdrawForm);
+      fetch('../controller/retirar_saldo.php', {
+          method: 'POST',
+          body: formData
+      })
+      .then(response => response.json())
+      .then(handleResponse);
+  });
+});
