@@ -32,6 +32,43 @@ $transition-fast: 0.2s;
 $transition-slow: 1s;
 $media-breakpoint: 450px;
 
+// Using defined breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+// Credit credit_card styles with responsive design
+$credit_credit_card-background: linear-gradient(to right bottom, #323941, #061018);
+$credit_credit_card-shadow: 0 33px 50px -15px rgba(50,55,63,.66);
+$credit_credit_card-color: #fff;
+
+@mixin responsive-font($size-mobile, $size-tablet, $size-desktop) {
+  font-size: $size-mobile;
+
+  @media (min-width: $breakpoint-tablet) {
+      font-size: $size-tablet;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+      font-size: $size-desktop;
+  }
+}
+
+// Responsive typography and spacing for credit credit_card elements
+.credit-credit_card {
+    @include responsive-font(14px, 16px, 18px);
+    padding: 10px;
+
+    @media (min-width: $breakpoint-tablet) {
+        padding: 15px;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+        padding: 20px;
+    }
+}
+
+
 // Mixins
 @mixin box-shadow($shadow) {
   box-shadow: $shadow;

@@ -1,5 +1,5 @@
 .sidebar {
-  width: 280px;
+  width: 100%;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -12,14 +12,19 @@
   transition: all 0.3s;
 }
 
+@media (min-width: 768px) {
+  .sidebar {
+    width: 280px;
+  }
+}
 
 .main-content {
-  margin-left: 280px;
-  -webkit-transition: margin-left 0.3s;
-  transition: margin-left 0.3s;
-}
-.main-content.full-width {
   margin-left: 0;
+}
+@media (min-width: 768px) {
+  .main-content {
+    margin-left: 280px;
+  }
 }
 
 #sidebarToggle {
