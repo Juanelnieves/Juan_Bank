@@ -3,9 +3,9 @@ $font-family: 'Poppins', sans-serif;
 $primary-color: #000;
 $background-color: #242424;
 $highlight-border-color: #fff;
-$card-background: linear-gradient(to right bottom, #323941, #061018);
-$card-shadow: 0 33px 50px -15px rgba(50,55,63,.66);
-$card-color: #fff;
+$credit_card-background: linear-gradient(to right bottom, #323941, #061018);
+$credit_card-shadow: 0 33px 50px -15px rgba(50,55,63,.66);
+$credit_card-color: #fff;
 $highlight-shadow: 0 0 5px #fff;
 $blur-color-1: #ff6be7;
 $blur-color-2: #7288ff;
@@ -31,6 +31,43 @@ $transition-normal: 0.3s;
 $transition-fast: 0.2s;
 $transition-slow: 1s;
 $media-breakpoint: 450px;
+
+// Using defined breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+// Credit credit_card styles with responsive design
+$credit_credit_card-background: linear-gradient(to right bottom, #323941, #061018);
+$credit_credit_card-shadow: 0 33px 50px -15px rgba(50,55,63,.66);
+$credit_credit_card-color: #fff;
+
+@mixin responsive-font($size-mobile, $size-tablet, $size-desktop) {
+  font-size: $size-mobile;
+
+  @media (min-width: $breakpoint-tablet) {
+      font-size: $size-tablet;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+      font-size: $size-desktop;
+  }
+}
+
+// Responsive typography and spacing for credit credit_card elements
+.credit-credit_card {
+    @include responsive-font(14px, 16px, 18px);
+    padding: 10px;
+
+    @media (min-width: $breakpoint-tablet) {
+        padding: 15px;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+        padding: 20px;
+    }
+}
+
 
 // Mixins
 @mixin box-shadow($shadow) {
@@ -133,8 +170,8 @@ body {
   }
 }
 
-// Card Styles
-.card {
+// credit_card Styles
+.credit_card {
   position: relative;
   max-width: 420px;
   margin: 0 auto;
@@ -157,9 +194,9 @@ body {
     height: 233px;
     border-radius: $border-radius-large;
     padding: 24px 30px 30px;
-    background: $card-background;
-    @include box-shadow($card-shadow);
-    color: $card-color;
+    background: $credit_card-background;
+    @include box-shadow($credit_card-shadow);
+    color: $credit_card-color;
     overflow: hidden;
     margin: 0 auto;
     backface-visibility: hidden;
@@ -185,7 +222,7 @@ body {
     position: relative;
   }
 
-  // Media Query for Card
+  // Media Query for credit_card
   @media (max-width: $media-breakpoint) {
     &__front,
     &__back {
@@ -195,7 +232,7 @@ body {
   }
 }
 
-.card__hide_line {
+.credit_card__hide_line {
     height: 40px;
     width: 100%;
     background-color: $hide-line-bg;
@@ -203,7 +240,7 @@ body {
     z-index: 1;
   }
   
-  .card_cvv {
+  .credit_card_cvv {
     position: relative;
     z-index: 1;
     margin-top: 24px;
@@ -216,7 +253,7 @@ body {
     text-transform: $text-transform-uppercase;
   }
   
-  .card_cvv_field {
+  .credit_card_cvv_field {
     margin-top: 6px;
     background-color: $cvv-bg;
     border-radius: $border-radius-medium;
@@ -231,7 +268,7 @@ body {
     line-height: 21px;
   }
   
-  .card__header {
+  .credit_card__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -241,7 +278,7 @@ body {
     z-index: 1;
   }
   
-  .card__number {
+  .credit_card__number {
     font-size: $font-size-large;
     margin-bottom: 32px;
     position: relative;
@@ -265,7 +302,7 @@ body {
     }
   }
   
-  .card__footer {
+  .credit_card__footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -273,11 +310,11 @@ body {
     z-index: 1;
   }
   
-  .card__holder {
+  .credit_card__holder {
     text-transform: $text-transform-uppercase;
   }
   
-  .card__section__title {
+  .credit_card__section__title {
     font-size: $font-size-medium;
     font-weight: $font-weight-bold;
     text-transform: $text-transform-uppercase;
