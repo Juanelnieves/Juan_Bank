@@ -1,9 +1,14 @@
 <?php
 session_start();
 include_once 'conexion.php'; 
-
+include_once 'iban_controlador.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombre = trim($_POST['nombre']);
+
+    // Generar el IBAN basado en el nombre del usuario
+    $iban = generarIBAN($nombre);
+    // Verificar y modificar el IBAN para asegurar su unicidad
+    $ibanUnico = verificarYModificarIBAN($conn, $iban);
     $apellido = trim($_POST['apellido']);
     $email = trim($_POST['email']);
     $password = $_POST['password'];
@@ -28,12 +33,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
         // Preparar la consulta para insertar el nuevo usuario.
-        $sql = "INSERT INTO Usuarios (nombre, apellido, email, contrasena) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO Usuarios (nombre, apellido, email, contrasena, iban) VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
 
         if ($stmt) {
             // Vincular los parámetros y ejecutar la consulta.
-            $stmt->bind_param("ssss", $nombre, $apellido, $email, $passwordHash);
+            $stmt->bind_param("sssss", $nombre, $apellido, $email, $passwordHash, $ibanUnico);
             if ($stmt->execute()) {
                 // Registro exitoso, redirigir al login
                 header("Location: ../view/login.php"); 
