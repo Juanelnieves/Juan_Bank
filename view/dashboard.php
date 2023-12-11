@@ -57,7 +57,12 @@
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <!-- Contenido de la sidebar aquí -->
+      <div class="config-section mt-3">
+        <a href="dashboard.php" class="btn btn-link text-white">Inicio</a>
+      </div>
+      <div class="config-section mt-3">
+        <a href="configuracion.php" class="btn btn-link text-white">Configuración</a>
+      </div>
     </div>
   </div>
   <!-- Contenido Principal -->
@@ -78,7 +83,7 @@
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">Detalles de la Cuenta</h5>
-                  <p>Saldo: <strong><?php echo htmlspecialchars($userSaldo); ?>€</strong></p>
+                  <p>Saldo: <strong id="userSaldo"><?php echo htmlspecialchars($userSaldo); ?>€</strong></p>
                 </div>
               </div>
             </div>
@@ -149,7 +154,7 @@
               <div class="card mb-4">
                 <div class="card-body">
                   <h5 class="card-title">Añadir Saldo</h5>
-                  <form action="../controller/añadir_saldo.php" method="post">
+                  <form id="addForm" action="../controller/añadir_saldo.php" method="post">
                     <div class="mb-3">
                       <label for="addAmount" class="form-label">Cantidad</label>
                       <input type="number" class="form-control" id="addAmount" name="addAmount" min="0.01" step="0.01" required>

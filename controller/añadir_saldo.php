@@ -21,15 +21,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
     $stmtTransaccion->bind_param("ids", $userId, $addAmount, $concept);
     $stmtTransaccion->execute();
     $stmtTransaccion->close();
-    
+
     // Actualizar el saldo en la base de datos
     $sql = "UPDATE Usuarios SET saldo = saldo + ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("di", $addAmount, $userId);
 
     if ($stmt->execute()) {
-        header("Location: ../view/dashboard.php");
-        exit();
+        header('Content-Type: application/json');
+        $respuesta = ['status' => 'success', 'message' => 'Operación exitosa'];
+        echo json_encode($respuesta);
+        exit;
     } else {
         echo "Error al añadir saldo.";
     }

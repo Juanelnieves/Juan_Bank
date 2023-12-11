@@ -18,7 +18,7 @@ CREATE TABLE Usuarios (
     pais VARCHAR(255) NOT NULL,
     iban VARCHAR(255) UNIQUE NOT NULL,
     es_admin BOOLEAN DEFAULT FALSE,
-    saldo DECIMAL(10,2),
+    saldo DECIMAL(10,2) NOT NULL,
     moneda_preferida ENUM('EUR', 'USD', 'JPY', 'GBP', 'RUB') DEFAULT 'EUR',
     saldo_hexadecimal VARCHAR(255)
 );
@@ -38,6 +38,7 @@ CREATE TABLE Transacciones (
     id_usuario INT,
     cantidad DECIMAL(10,2),
     tipo ENUM('añadir', 'retirar'),
+	concepto VARCHAR(255) NOT NULL,
     fecha_hora DATETIME,
     FOREIGN KEY (id_usuario) REFERENCES Usuarios(id)
 );

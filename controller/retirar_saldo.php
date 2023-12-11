@@ -36,8 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
             $updateStmt->bind_param("di", $withdrawAmount, $userId);
 
             if ($updateStmt->execute()) {
-                header("Location: ../view/dashboard.php");
-                exit();
+                header('Content-Type: application/json');
+                $respuesta = ['status' => 'success', 'message' => 'Operación exitosa'];
+                echo json_encode($respuesta);
+                exit;
             } else {
                 echo json_encode(['status' => 'success', 'message' => 'Operación realizada con éxito']);
             }
@@ -55,4 +57,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
 }
 
 $conn->close();
-?>
