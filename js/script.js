@@ -3,15 +3,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const withdrawForm = document.getElementById('withdrawForm');
 
     const handleResponse = (data) => {
-    alert(data.message); 
-    if (data.status === 'success') {
-        document.getElementById('userSaldo').innerText = data.userSaldo; // Asumiendo que 'data.nuevoSaldo' es el saldo actualizado enviado desde el servidor
+        alert(data.message); 
+        if (data.status === 'success') {
+            // Asegúrate de que 'data.userSaldo' esté presente en la respuesta
+            document.getElementById('userSaldo').innerText = `${data.userSaldo}€`;
+        }
     }
-};
 
 
     if (addForm) {
         addForm.addEventListener('submit', function(e) {
+            
             e.preventDefault();
             const formData = new FormData(addForm);
             fetch('../controller/añadir_saldo.php', {

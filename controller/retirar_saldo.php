@@ -36,12 +36,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
             $updateStmt->bind_param("di", $withdrawAmount, $userId);
 
             if ($updateStmt->execute()) {
+                // Consulta para obtener el saldo actualizado
+                $sqlSaldo = "SELECT saldo FROM Usuarios WHERE id = ?";
+                $stmtSaldo = $conn->prepare($sqlSaldo);
+                $stmtSaldo->bind_param("i", $userId);
+                $stmtSaldo->execute();
+                $resultadoSaldo = $stmtSaldo->get_result();
+                if ($fila = $resultadoSaldo->fetch_assoc()) {
+                    $nuevoSaldo = $fila['saldo'];
+                }
+                $stmtSaldo->close();
+
                 header('Content-Type: application/json');
-                $respuesta = ['status' => 'success', 'message' => 'Operación exitosa'];
-                echo json_encode($respuesta);
-                exit;
+                echo json_encode(['status' => 'success', 'message' => 'Retiro realizado con éxito', 'userSaldo' => $nuevoSaldo]);
             } else {
-                echo json_encode(['status' => 'success', 'message' => 'Operación realizada con éxito']);
+                echo json_encode(['status' => 'error', 'message' => 'Error al realizar el retiro']);
             }
             $updateStmt->close();
         } else {
@@ -57,3 +66,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
 }
 
 $conn->close();
+?>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once 'conexion.php'; // Asegúrate de que este archivo gestiona la conexión a la base de datos.
+include_once 'conexion.php'; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
     $userId = $_SESSION['user_id'];
@@ -22,23 +22,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_SESSION['user_id'])) {
     $stmtTransaccion->execute();
     $stmtTransaccion->close();
 
-    // Actualizar el saldo en la base de datos
-    $sql = "UPDATE Usuarios SET saldo = saldo + ? WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("di", $addAmount, $userId);
+   // Actualizar el saldo en la base de datos
+$sql = "UPDATE Usuarios SET saldo = saldo + ? WHERE id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("di", $addAmount, $userId);
 
-    if ($stmt->execute()) {
-        header('Content-Type: application/json');
-        $respuesta = ['status' => 'success', 'message' => 'Operación exitosa'];
-        echo json_encode($respuesta);
-        exit;
-    } else {
-        echo "Error al añadir saldo.";
+if ($stmt->execute()) {
+    // Consulta para obtener el saldo actualizado
+    $sqlSaldo = "SELECT saldo FROM Usuarios WHERE id = ?";
+    $stmtSaldo = $conn->prepare($sqlSaldo);
+    $stmtSaldo->bind_param("i", $userId);
+    $stmtSaldo->execute();
+    $resultadoSaldo = $stmtSaldo->get_result();
+    if ($fila = $resultadoSaldo->fetch_assoc()) {
+        $nuevoSaldo = $fila['saldo'];
     }
+    $stmtSaldo->close();
 
-    $stmt->close();
+    header('Content-Type: application/json');
+    $respuesta = [
+        'status' => 'success', 
+        'message' => 'Operación exitosa',
+        'userSaldo' => $nuevoSaldo // Asegúrate de enviar el saldo actualizado
+    ];
+    echo json_encode($respuesta);
+    exit;
 } else {
-    echo "Solicitud no válida.";
+    echo "Error al añadir saldo.";
 }
-
+}
+$stmt->close();
 $conn->close();
