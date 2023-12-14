@@ -18,8 +18,10 @@ $userCiudad = "";
 $userProvincia = "";
 $userPais = "";
 $userSaldo = "";
+$iban = "";
 
-$sql = "SELECT nombre, apellido, email, direccion, ciudad, provincia, pais, saldo FROM Usuarios WHERE id = ?";
+
+$sql = "SELECT nombre, apellido, email, direccion, ciudad, provincia, pais, iban, saldo FROM Usuarios WHERE id = ?";
 if ($stmt = $conn->prepare($sql)) {
     $stmt->bind_param("i", $userId);
     $stmt->execute();
@@ -33,6 +35,7 @@ if ($stmt = $conn->prepare($sql)) {
         $userCiudad = $row['ciudad'];
         $userProvincia = $row['provincia'];
         $userPais = $row['pais'];
+        $iban = $row['iban'];
         $userSaldo = $row['saldo'];
     }
     $stmt->close();

@@ -152,6 +152,15 @@
           </div>
 
           <br>
+          <div class="col-lg-6 col-md-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">IBAN</h5>
+                  <p>IBAN: <strong id="iban"><?php echo htmlspecialchars($iban); ?></strong></p>
+                </div>
+              </div>
+            </div>
+          <br>
 
           <div class="row">
             <!-- Formulario para Añadir Saldo -->
