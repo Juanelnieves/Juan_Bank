@@ -108,34 +108,34 @@
                     </svg>
                   </div>
                   <div id="credit_card_number" class="credit_card__number">
-                    <span>#<br></span>
-                    <span>#<br></span>
-                    <span>#<br></span>
-                    <span>#<br></span>
+                    <span>7<br></span>
+                    <span>2<br></span>
+                    <span>6<br></span>
+                    <span>1<br></span>
 
-                    <span>#<br></span>
-                    <span>#<br></span>
-                    <span>#<br></span>
-                    <span>#<br></span>
+                    <span>9<br></span>
+                    <span>4<br></span>
+                    <span>5<br></span>
+                    <span>7<br></span>
 
-                    <span>#<br></span>
-                    <span>#<br></span>
-                    <span>#<br></span>
-                    <span>#<br></span>
+                    <span>3<br></span>
+                    <span>0<br></span>
+                    <span>9<br></span>
+                    <span>4<br></span>
 
-                    <span>#<br></span>
-                    <span>#<br></span>
-                    <span>#<br></span>
-                    <span>#<br></span>
+                    <span>8<br></span>
+                    <span>1<br></span>
+                    <span>4<br></span>
+                    <span>6<br></span>
                   </div>
                   <div class="credit_card__footer">
                     <div class="credit_card__holder">
                       <div class="credit_card__section__title">Card Holder</div>
-                      <div id="credit_card_holder">Name on card</div>
+                      <div id="credit_card_holder"><?php echo htmlspecialchars($userName); ?></div>
                     </div>
                     <div class="credit_card__expires">
                       <div class="credit_card__section__title">Expires</div>
-                      <span id="credit_card_expires_month">MM</span>/<span id="credit_card_expires_year">YY</span>
+                      <span id="credit_card_expires_month">01</span>/<span id="credit_card_expires_year">2077</span>
                     </div>
                   </div>
                 </section>
@@ -144,7 +144,7 @@
 
                   <div class="credit_card_cvv">
                     <span>CVV</span>
-                    <div id="credit_card_cvv_field" class="credit_card_cvv_field"></div>
+                    <div id="credit_card_cvv_field" class="credit_card_cvv_field"> 333</div>
                   </div>
                 </section>
               </section>
