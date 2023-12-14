@@ -33,6 +33,9 @@ include_once '../controller/recuperar_info_usuario.php';
             <div class="config-section mt-3">
                 <a href="configuracion.php" class="btn btn-link text-white">Configuración</a>
             </div>
+            <div class="config-section mt-3">
+                <a href="movimientos_user.php" class="btn btn-link text-white">Movimientos</a>
+            </div>
         </div>
     </div>
 

@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    cargarPrestamos();
     cargarOpcionesPrestamo();
     const addForm = document.getElementById('addForm');
     const withdrawForm = document.getElementById('withdrawForm');
@@ -101,33 +100,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-
-function cargarPrestamos() {
-    fetch('../controller/get_user_loan.php')
-        .then(response => response.json())
-        .then(prestamos => {
-            const loanList = document.getElementById('loanList');
-            prestamos.forEach(prestamo => {
-                loanList.innerHTML += `
-                    <tr>
-                        <td>${prestamo.id}</td>
-                        <td>${prestamo.cantidad}</td>
-                        <td>${prestamo.estado}</td>
-                        <td>${prestamo.cantidad_restante}</td>
-                        <td>${formatDate(prestamo.fecha_vencimiento)}</td>
-                    </tr>
-                `;
-            });
-        })
-        .catch(error => {
-            console.error('Error al cargar préstamos:', error);
-        });
-}
-
-function formatDate(dateString) {
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-}
 
 function cargarOpcionesPrestamo() {
     fetch('../controller/get_user_loan.php')

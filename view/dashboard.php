@@ -73,6 +73,9 @@
       <div class="config-section mt-3">
         <a href="configuracion.php" class="btn btn-link text-white">Configuración</a>
       </div>
+      <div class="config-section mt-3">
+        <a href="movimientos_user.php" class="btn btn-link text-white">Movimientos</a>
+      </div>
     </div>
   </div>
   <!-- Contenido Principal -->
@@ -257,69 +260,47 @@
         </div>
 
 
+        <div class="d-flex justify-content-end">
+          <a href="../controller/logout.php" class="btn btn-warning">Cerrar Sesión</a>
+        </div>
 
-        <!--Visualizacion de Préstamos-->
-        <div class="container my-5">
-          <h3>Mis Préstamos</h3>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Cantidad Total</th>
-                  <th>Estado</th>
-                  <th>Cantidad Restante</th>
-                  <th>Fecha Vencimiento</th>
-                </tr>
-              </thead>
-              <tbody id="loanList">
-                <!-- Los préstamos se cargarán aquí -->
-              </tbody>
-            </table>
+        <!-- Icono de Chat -->
+        <div class="chat-icon" id="chatIcon">
+          <img src="../img/chat_icon.svg" alt="Chat" />
+        </div>
+
+        <!-- Panel de Chat -->
+        <div class="chat-panel" id="chatPanel">
+          <div class="chat-header">
+            <h5>Mensajes</h5>
+            <button id="closeChat">&times;</button>
           </div>
-
-
-          <div class="d-flex justify-content-end">
-            <a href="../controller/logout.php" class="btn btn-warning">Cerrar Sesión</a>
+          <div class="chat-body">
+            <ul id="messageList">
+              <!-- Los mensajes se cargarán aquí -->
+            </ul>
           </div>
-
-          <!-- Icono de Chat -->
-          <div class="chat-icon" id="chatIcon">
-            <img src="../img/chat_icon.svg" alt="Chat" />
+          <div class="chat-footer">
+            <form id="sendMessageForm">
+              <div class="chat-footer">
+                <form id="sendMessageForm">
+                  <!-- Dropdown para seleccionar el usuario -->
+                  <select id="userSelect">
+                    <!-- Las opciones se cargarán dinámicamente -->
+                  </select>
+                  <input type="text" id="messageText" placeholder="Escribe un mensaje..." />
+                  <button type="submit">Enviar</button>
+                </form>
+              </div>
+            </form>
           </div>
+        </div>
 
-          <!-- Panel de Chat -->
-          <div class="chat-panel" id="chatPanel">
-            <div class="chat-header">
-              <h5>Mensajes</h5>
-              <button id="closeChat">&times;</button>
-            </div>
-            <div class="chat-body">
-              <ul id="messageList">
-                <!-- Los mensajes se cargarán aquí -->
-              </ul>
-            </div>
-            <div class="chat-footer">
-              <form id="sendMessageForm">
-                <div class="chat-footer">
-                  <form id="sendMessageForm">
-                    <!-- Dropdown para seleccionar el usuario -->
-                    <select id="userSelect">
-                      <!-- Las opciones se cargarán dinámicamente -->
-                    </select>
-                    <input type="text" id="messageText" placeholder="Escribe un mensaje..." />
-                    <button type="submit">Enviar</button>
-                  </form>
-                </div>
-              </form>
-            </div>
-          </div>
-
-          <!-- Bootstrap JavaScript Bundle with Popper -->
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-          <script src="../js/cambiar_divisa.js"></script>
-          <script src="../js/script.js"></script>
-          <script src="../js/chat.js"></script>
+        <!-- Bootstrap JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../js/cambiar_divisa.js"></script>
+        <script src="../js/script.js"></script>
+        <script src="../js/chat.js"></script>
 
 </body>
 

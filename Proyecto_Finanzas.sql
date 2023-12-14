@@ -70,4 +70,3 @@ INSERT INTO Usuarios (nombre, apellido, contrasena, dni, email, fecha_nacimiento
 VALUES ('admin', 'admin', '$2y$10$npFvBVlq.YK6MYKYCVa0r.TuGVim8WjwVIzbVno2A4b0JLuhLMfTa', '12342678A', 'admin2@admin.com', '2001-09-11', 'EEUU', 'IBANAadmin', TRUE, 11092001, 'EUR', '0');
 
 
-
