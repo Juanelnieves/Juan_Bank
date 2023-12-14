@@ -16,6 +16,14 @@
 
 
 </head>
+<style>
+  .textarea-custom-size {
+    resize: none;
+    /* Deshabilita la capacidad de redimensionar el textarea */
+    height: 51px;
+    /* Altura personalizada para el textarea */
+  }
+</style>
 
 <body>
 
@@ -199,47 +207,119 @@
           </div>
         </div>
 
-        <div class="d-flex justify-content-end">
-          <a href="../controller/logout.php" class="btn btn-warning">Cerrar Sesión</a>
-        </div>
 
-        <!-- Icono de Chat -->
-        <div class="chat-icon" id="chatIcon">
-          <img src="../img/chat_icon.svg" alt="Chat" />
-        </div>
 
-        <!-- Panel de Chat -->
-        <div class="chat-panel" id="chatPanel">
-          <div class="chat-header">
-            <h5>Mensajes</h5>
-            <button id="closeChat">&times;</button>
-          </div>
-          <div class="chat-body">
-            <ul id="messageList">
-              <!-- Los mensajes se cargarán aquí -->
-            </ul>
-          </div>
-          <div class="chat-footer">
-            <form id="sendMessageForm">
-              <div class="chat-footer">
-                <form id="sendMessageForm">
-                  <!-- Dropdown para seleccionar el usuario -->
-                  <select id="userSelect">
-                    <!-- Las opciones se cargarán dinámicamente -->
-                  </select>
-                  <input type="text" id="messageText" placeholder="Escribe un mensaje..." />
-                  <button type="submit">Enviar</button>
-                </form>
+        <!-- Contenedor Principal -->
+        <div class="container my-5">
+          <div class="row justify-content-center">
+            <!-- Formulario para Solicitar Préstamos -->
+            <div class="col-lg-6 col-md-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Solicitar Préstamo</h5>
+                  <form id="requestLoanForm" action="../controller/solicitar_prestamo.php" method="post">
+                    <div class="mb-3">
+                      <label for="loanAmount" class="form-label">Cantidad</label>
+                      <input type="number" class="form-control" id="loanAmount" name="loanAmount" min="0.01" step="0.01" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="loanReason" class="form-label">Motivo</label>
+                      <textarea class="form-control textarea-custom-size" id="loanReason" name="loanReason" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Solicitar</button>
+                  </form>
+                </div>
               </div>
-            </form>
+            </div>
+
+            <!-- Formulario para Realizar Pagos de Préstamos -->
+            <div class="col-lg-6 col-md-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Realizar Pago de Préstamo</h5>
+                  <form id="makeLoanPaymentForm" action="../controller/realizar_pago_prestamo.php" method="post">
+                    <div class="mb-3">
+                      <label for="paymentAmount" class="form-label">Cantidad del Pago</label>
+                      <input type="number" class="form-control" id="paymentAmount" name="paymentAmount" min="0.01" step="0.01" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="loanId" class="form-label">ID del Préstamo</label>
+                      <select class="form-control" id="loanId" name="loanId">
+                        <!-- Las opciones de préstamo se cargarán aquí -->
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Realizar Pago</button>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Bootstrap JavaScript Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="../js/cambiar_divisa.js"></script>
-        <script src="../js/script.js"></script>
-        <script src="../js/chat.js"></script>
+
+
+        <!--Visualizacion de Préstamos-->
+        <div class="container my-5">
+          <h3>Mis Préstamos</h3>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Cantidad Total</th>
+                  <th>Estado</th>
+                  <th>Cantidad Restante</th>
+                  <th>Fecha Vencimiento</th>
+                </tr>
+              </thead>
+              <tbody id="loanList">
+                <!-- Los préstamos se cargarán aquí -->
+              </tbody>
+            </table>
+          </div>
+
+
+          <div class="d-flex justify-content-end">
+            <a href="../controller/logout.php" class="btn btn-warning">Cerrar Sesión</a>
+          </div>
+
+          <!-- Icono de Chat -->
+          <div class="chat-icon" id="chatIcon">
+            <img src="../img/chat_icon.svg" alt="Chat" />
+          </div>
+
+          <!-- Panel de Chat -->
+          <div class="chat-panel" id="chatPanel">
+            <div class="chat-header">
+              <h5>Mensajes</h5>
+              <button id="closeChat">&times;</button>
+            </div>
+            <div class="chat-body">
+              <ul id="messageList">
+                <!-- Los mensajes se cargarán aquí -->
+              </ul>
+            </div>
+            <div class="chat-footer">
+              <form id="sendMessageForm">
+                <div class="chat-footer">
+                  <form id="sendMessageForm">
+                    <!-- Dropdown para seleccionar el usuario -->
+                    <select id="userSelect">
+                      <!-- Las opciones se cargarán dinámicamente -->
+                    </select>
+                    <input type="text" id="messageText" placeholder="Escribe un mensaje..." />
+                    <button type="submit">Enviar</button>
+                  </form>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Bootstrap JavaScript Bundle with Popper -->
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+          <script src="../js/cambiar_divisa.js"></script>
+          <script src="../js/script.js"></script>
+          <script src="../js/chat.js"></script>
 
 </body>
 

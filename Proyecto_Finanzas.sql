@@ -28,8 +28,10 @@ CREATE TABLE Prestamos (
     id_usuario INT,
     cantidad DECIMAL(10,2),
     motivo TEXT,
-    estado ENUM('pendiente', 'aprobado', 'rechazado'),
+	estado ENUM('pendiente', 'aprobado', 'rechazado', 'completado') NOT NULL,
     fecha_vencimiento DATE,
+    pago_mensual DECIMAL(10,2) NOT NULL,
+    cantidad_restante DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES Usuarios(id)
 );
 
@@ -53,7 +55,19 @@ CREATE TABLE Mensajes (
     FOREIGN KEY (destinatario) REFERENCES Usuarios(id)
 );
 
+CREATE TABLE PagosPrestamos (
+    id_pago INT AUTO_INCREMENT PRIMARY KEY,
+    id_prestamo INT NOT NULL,
+    fecha_pago DATE NOT NULL,
+    cantidad DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (id_prestamo) REFERENCES Prestamos(id)
+);
 
 INSERT INTO Usuarios (nombre, apellido, contrasena, dni, email, fecha_nacimiento, pais, iban, es_admin, saldo, moneda_preferida, saldo_hexadecimal)
 VALUES ('admin', 'admin', 'admin', '12345678A', 'admin@admin.com', '2001-09-11', 'EEUU', 'IBANAdmin', TRUE, 11092001, 'EUR', '0');
+
+INSERT INTO Usuarios (nombre, apellido, contrasena, dni, email, fecha_nacimiento, pais, iban, es_admin, saldo, moneda_preferida, saldo_hexadecimal)
+VALUES ('admin', 'admin', '$2y$10$npFvBVlq.YK6MYKYCVa0r.TuGVim8WjwVIzbVno2A4b0JLuhLMfTa', '12342678A', 'admin2@admin.com', '2001-09-11', 'EEUU', 'IBANAadmin', TRUE, 11092001, 'EUR', '0');
+
+
 

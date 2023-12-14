@@ -9,8 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        // Modificar la consulta para obtener más información del usuario
-        $sql = "SELECT id, nombre, contrasena FROM Usuarios WHERE email = ?";
+        // Modificar la consulta para obtener el rol del usuario
+        $sql = "SELECT id, nombre, contrasena, es_admin FROM Usuarios WHERE email = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -21,11 +21,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($password, $row['contrasena'])) {
                 // Almacenar datos del usuario en la sesión
                 $_SESSION['user_id'] = $row['id'];
-                $_SESSION['user_name'] = $row['nombre']; 
+                $_SESSION['user_name'] = $row['nombre'];
 
-                // Redireccionar a la página del usuario
-                header("Location: ../view/dashboard.php");
-                exit(); // Importante para evitar la ejecución de código adicional después de la redirección
+                // Redireccionar al usuario según su rol
+                if ($row['es_admin']) {
+                    header("Location: ../view/admin_dashboard.php");
+                } else {
+                    header("Location: ../view/dashboard.php");
+                }
+                exit();
             } else {
                 echo "Contraseña incorrecta";
             }
