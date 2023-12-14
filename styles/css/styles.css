@@ -12,6 +12,13 @@
   transition: all 0.3s;
 }
 
+.textarea-custom-size {
+  resize: none;
+  /* Deshabilita la capacidad de redimensionar el textarea */
+  height: 51px;
+  /* Altura personalizada para el textarea */
+}
+
 @media (min-width: 768px) {
   .sidebar {
     width: 280px;

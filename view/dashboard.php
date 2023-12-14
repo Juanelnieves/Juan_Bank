@@ -16,14 +16,6 @@
 
 
 </head>
-<style>
-  .textarea-custom-size {
-    resize: none;
-    /* Deshabilita la capacidad de redimensionar el textarea */
-    height: 51px;
-    /* Altura personalizada para el textarea */
-  }
-</style>
 
 <body>
 
