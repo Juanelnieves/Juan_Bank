@@ -263,3 +263,124 @@ body {
     text-align: center;
     margin-top: 20px;
 }
+
+
+.bank-banner {
+    @include flex-center;
+    background: $color-background-main;
+    padding: calculate-rem(30px);
+    margin-bottom: calculate-rem(20px);
+
+    .bank-logo {
+        width: calculate-rem(100px);
+        margin-right: calculate-rem(20px);
+    }
+
+    .banner-content {
+        h1 {
+            font-size: calculate-rem(36px);
+            color: $color-neon-green;
+            @include text-shadow($color-text-light);
+        }
+
+        p {
+            font-size: calculate-rem(18px);
+            color: $color-text-light;
+        }
+    }
+}
+
+// Video Section Styles
+.video-section {
+    @include flex-center;
+    flex-direction: column;
+    gap: calculate-rem(20px);
+    padding: calculate-rem(20px) 0; // Agrega padding vertical para separar de otros elementos
+  
+    iframe {
+      width: calc(100% - calculate-rem(20px)); // Resta el padding lateral para centrar el contenido
+      height: auto; // La altura se ajustará proporcionalmente
+      aspect-ratio: 16 / 9; // Mantiene la relación de aspecto de los videos
+      max-width: calculate-rem(560px); // Limita el ancho máximo del video
+  
+      // Ajustes responsivos para dispositivos pequeños
+      @media (max-width: calculate-rem(576px)) {
+        width: calc(100% - calculate-rem(10px)); // Permite que el video sea más grande en dispositivos pequeños
+        max-width: none; // Remueve el ancho máximo para que el video sea más grande
+        margin: 0; // Elimina márgenes para que el video utilice todo el ancho disponible
+      }
+    }
+  }
+  
+  // Banner and Footer Adjustment for Mobile View
+  @media (max-width: calculate-rem(576px)) {
+    .bank-banner {
+      margin-bottom: calculate-rem(30px); // Aumenta el espacio debajo del banner
+    }
+  
+    .footer {
+      position: relative; // Evita que el footer sea absoluto y se superponga con otros elementos
+      margin-top: calculate-rem(30px); // Aumenta el espacio encima del footer
+    }
+  }
+  
+
+
+
+// Footer styles
+.footer {
+    width: 100%;
+    padding: calculate-rem(20px) calculate-rem(40px);
+    background-color: $color-navbar-background;
+    color: $color-text-light;
+    @include flex-center;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: calculate-rem(14px);
+
+    // Adjust for responsive design
+    @media (max-width: calculate-rem(768px)) {
+        flex-direction: column;
+        text-align: center;
+        padding: calculate-rem(20px);
+    }
+
+    // Container for logo and brand name
+    .footer-logo-brand {
+        @include flex-center;
+        align-items: center;
+
+        .footer-logo {
+            img {
+                width: calculate-rem(60px); // Logo size
+            }
+        }
+
+        .footer-brand {
+            font-size: calculate-rem(24px);
+            font-weight: bold;
+            color: $color-neon-green;
+            margin-left: calculate-rem(8px); // Space between logo and brand name
+            @include text-shadow($color-text-light);
+        }
+    }
+
+    .footer-contact {
+        h6 {
+            font-weight: bold;
+            margin-bottom: calculate-rem(8px);
+        }
+
+        p {
+            font-size: calculate-rem(14px);
+            margin-bottom: calculate-rem(4px); // Added for spacing between lines
+            line-height: 1.6; // For better readability
+        }
+
+        i {
+            color: $color-neon-green; // In case you use icons later
+        }
+    }
+}

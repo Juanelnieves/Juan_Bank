@@ -1,0 +1,153 @@
+$color-amarillo: #fbcd00;
+$color-blanco: #f6f6f6;
+$negrita: bold;
+$fuente: "Arial", sans-serif;
+$total100: 100%;
+
+@mixin tablet {
+    @media (max-width: 980px) {
+        @content;
+    }
+}
+
+@mixin movil {
+    @media (max-width: 520px) {
+        @content;
+    }
+}
+
+
+* {
+    font-family: $fuente;
+}
+
+/*Para que la barra de scroll aparezca siempre y no mueva el header en las que aparecía*/
+body {
+    overflow-y: scroll;
+    background-color: #0e1215 !important;
+}
+
+body::-webkit-scrollbar {
+    width: 16px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #505458;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #0e1215;
+}
+
+/*Fin barra scroll*/
+
+.negrita {
+    font-weight: $negrita;
+}
+
+@mixin contenedores {
+    padding: 5%;
+    margin-top: 2%;
+}
+
+.contenedorMovimientos {
+    @include contenedores;
+}
+
+.contenedorAreaPersonal {
+    @include contenedores;
+    margin-bottom: 1%;
+}
+
+.contenedorPrestamosAdmin {
+    @include contenedores;
+    margin-bottom: 1%;
+}
+
+.iban {
+    font-size: 14px + 6px;
+}
+
+.btn-amarillo {
+    //color: $color-amarillo;
+    background-color: $color-amarillo !important;
+    border-color: $color-amarillo !important;
+}
+
+.imagenUsuario {
+    width: 100% - 88%;
+    height: auto;
+
+    @include movil () {
+        width: 100% - 65%;
+    }
+
+    @include tablet () {}
+}
+
+.centrarImagen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.vertical-center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.amarillo {
+    color: $color-amarillo;
+}
+
+@mixin lista {
+    list-style: none;
+    font-size: 16px;
+    color: white;
+}
+
+.listaMensaje {
+    @include lista;
+    text-align: center;
+    padding: 0;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: auto;
+
+    @include tablet () {
+        font-size: 12px;
+    }
+}
+
+.btn-ingresar,
+.btn-retirar {
+    @include tablet () {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    @include tablet () {
+        display: inline;
+        width: auto;
+    }
+}
+
+$colores: yellow, white, red;
+
+@for $i from 1 through 3 {
+    $color: nth($colores, $i);
+    .el-#{$color} {
+        color: $color;
+    }
+}
+
