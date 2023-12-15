@@ -66,6 +66,7 @@ CREATE TABLE PagosPrestamos (
 INSERT INTO Usuarios (nombre, apellido, contrasena, dni, email, fecha_nacimiento, pais, iban, es_admin, saldo, moneda_preferida, saldo_hexadecimal)
 VALUES ('admin', 'admin', 'admin', '12345678A', 'admin@admin.com', '2001-09-11', 'EEUU', 'IBANAdmin', TRUE, 11092001, 'EUR', '0');
 
+-- LA CONTRASEÑA CIFRADA ES Juan2004 para acceder a la cuenta admin
 INSERT INTO Usuarios (nombre, apellido, contrasena, dni, email, fecha_nacimiento, pais, iban, es_admin, saldo, moneda_preferida, saldo_hexadecimal)
 VALUES ('admin', 'admin', '$2y$10$npFvBVlq.YK6MYKYCVa0r.TuGVim8WjwVIzbVno2A4b0JLuhLMfTa', '12342678A', 'admin2@admin.com', '2001-09-11', 'EEUU', 'IBANAadmin', TRUE, 11092001, 'EUR', '0');
 
