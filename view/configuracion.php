@@ -11,6 +11,8 @@ include_once '../controller/recuperar_info_usuario.php';
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../styles/css/styles.css" rel="stylesheet">
+    <link href="../styles/css/settings.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -35,6 +37,9 @@ include_once '../controller/recuperar_info_usuario.php';
             </div>
             <div class="config-section mt-3">
                 <a href="movimientos_user.php" class="btn btn-link text-white">Movimientos</a>
+            </div>
+            <div class="d-flex justify-content-end">
+                <a href="../controller/logout.php" class="btn btn-warning">Cerrar Sesión</a>
             </div>
         </div>
     </div>

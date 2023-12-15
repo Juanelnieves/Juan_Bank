@@ -1,0 +1,72 @@
+// Importing the main variables and mixins from your styles.scss
+@import 'styles';
+
+@mixin responsive-font($color-text) {
+    color: $color-text;
+
+    font-size: $font-size-mobile;
+
+    @media (min-width: $breakpoint-tablet) {
+        font-size: $font-size-tablet;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+        font-size: $font-size-desktop;
+    }
+}
+
+body {
+    @include responsive-font($color-text-light); 
+    background-color: $color-background-dark;
+    color: $color-text-light;
+    font-family: sans-serif;
+}
+
+// Navbar styling
+.navbar {
+    background-color: $color-grey-20;
+}
+
+// Sidebar styling
+.offcanvas-start {
+    background-color: $color-grey-15; 
+    color: $color-absolute-white;
+}
+
+// Table styling to match the dark theme
+.table {
+    background-color: transparent;
+
+    th {
+        background-color: $color-grey-40; 
+    }
+
+    &.table-hover tbody tr:hover {
+        background-color: lighten($color-grey-40, 5%); 
+    }
+    td {
+        color: $color-green-90;
+    }
+}
+
+// Table head styling
+.table-dark {
+    th {
+        background-color: $color-grey-40;
+        color: $color-absolute-white;
+    }
+}
+
+// Table row styling for the dark theme
+.table-striped {
+    color: $color-absolute-white;
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba($color-absolute-black, 0.03); 
+        color: $color-absolute-white;
+    }
+
+    td {
+        color: $color-green-90;
+    }
+}

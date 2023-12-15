@@ -20,7 +20,7 @@
 <body>
 
   <!-- Barra de Navegación y Banner -->
-  <div class="bank-banner bg-success">
+  <div class="bank-banner">
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container-fluid">
         <!-- Botón para activar la barra lateral desplegable -->
@@ -48,7 +48,7 @@
       </div>
     </nav>
     <div class="text-center py-2">
-      <h1 class="text-white">Bienvenido a NEO</h1>
+      <h1 class="welcome">Bienvenido a NEO</h1>
     </div>
   </div>
 
@@ -68,13 +68,16 @@
       <div class="config-section mt-3">
         <a href="movimientos_user.php" class="btn btn-link text-white">Movimientos</a>
       </div>
+      <div class="d-flex justify-content-end">
+        <a href="../controller/logout.php" class="btn btn-warning">Cerrar Sesión</a>
+      </div>
     </div>
   </div>
   <!-- Contenido Principal -->
   <div class="main-content" id="mainContent">
 
     <!-- Mensaje de Bienvenida y Tarjeta de Estilo Bancario -->
-    <div class="container my-5">
+    <div class="container">
       <div class="welcome-message mb-4">
         <h2>Hola <strong><?php echo htmlspecialchars($userName); ?></strong>, hoy es <strong><?php echo date("l"); ?></strong> <strong><?php echo date("j"); ?></strong> de <strong><?php echo date("F Y"); ?></strong>.</h2>
       </div>
@@ -153,13 +156,13 @@
 
           <br>
           <div class="col-lg-6 col-md-12 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">IBAN</h5>
-                  <p>IBAN: <strong id="iban"><?php echo htmlspecialchars($iban); ?></strong></p>
-                </div>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">IBAN</h5>
+                <p>IBAN: <strong id="iban"><?php echo htmlspecialchars($iban); ?></strong></p>
               </div>
             </div>
+          </div>
           <br>
 
           <div class="row">
@@ -214,7 +217,7 @@
 
 
         <!-- Contenedor Principal -->
-        <div class="container my-5">
+        <div class="container">
           <div class="row justify-content-center">
             <!-- Formulario para Solicitar Préstamos -->
             <div class="col-lg-6 col-md-12 mb-4">
@@ -258,11 +261,6 @@
               </div>
             </div>
           </div>
-        </div>
-
-
-        <div class="d-flex justify-content-end">
-          <a href="../controller/logout.php" class="btn btn-warning">Cerrar Sesión</a>
         </div>
 
         <!-- Icono de Chat -->

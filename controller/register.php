@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
+    $dni = $_POST['dni'];
 
     // Verificar si las contraseñas coinciden.
     if ($password !== $confirm_password) {
@@ -33,12 +34,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
         // Preparar la consulta para insertar el nuevo usuario.
-        $sql = "INSERT INTO Usuarios (nombre, apellido, email, contrasena, iban) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO Usuarios (nombre, apellido, dni, email, contrasena, iban) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
 
         if ($stmt) {
             // Vincular los parámetros y ejecutar la consulta.
-            $stmt->bind_param("sssss", $nombre, $apellido, $email, $passwordHash, $ibanUnico);
+            $stmt->bind_param("ssssss", $nombre, $apellido, $dni, $email, $passwordHash, $ibanUnico);
             if ($stmt->execute()) {
                 // Registro exitoso, redirigir al login
                 header("Location: ../view/login.php"); 

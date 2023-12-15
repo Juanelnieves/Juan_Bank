@@ -165,3 +165,59 @@ form textarea:focus {
   background-color: #121212;
   color: #FFFFFF;
 }
+
+body {
+  color: #FFFFFF;
+  font-size: 14px;
+  background-color: #121212;
+  color: #FFFFFF;
+  font-family: sans-serif;
+}
+@media (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+}
+@media (min-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+.navbar {
+  background-color: #333333;
+}
+
+.offcanvas-start {
+  background-color: #262626;
+  color: #FFF;
+}
+
+.table {
+  background-color: transparent;
+}
+.table th {
+  background-color: #656567;
+}
+.table.table-hover tbody tr:hover {
+  background-color: #727274;
+}
+.table td {
+  color: #F2FFCC;
+}
+
+.table-dark th {
+  background-color: #656567;
+  color: #FFF;
+}
+
+.table-striped {
+  color: #FFF;
+}
+.table-striped .table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.03);
+  color: #FFF;
+}
+.table-striped td {
+  color: #F2FFCC;
+}

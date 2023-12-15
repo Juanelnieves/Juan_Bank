@@ -9,7 +9,7 @@ $color-green-70: #DBFF66;
 $color-green-80: #E5FF99;
 
 $color-green-90: #F2FFCC;
-$color-green-95: #F8FFE5; 
+$color-green-95: #F8FFE5;
 $color-green-97: #FBFFF0;
 $color-green-99: #FEFFFA;
 
@@ -31,53 +31,232 @@ $color-grey-40: #656567;
 $color-grey-60: #98989A;
 $color-grey-70: #B3B3B3;
 $color-grey-75: #BFBFBF;
+
+// More colors
+$color-background-dark: #121212;
+$color-text-light: #FFFFFF;
+$color-text-grey: #A3A3A3;
+$color-input-background: #1E1E1E;
+$color-input-border: #333333;
+$color-button-green: #CAFF33;
+$color-card-background: #333;
+$color-button-add: #4CAF50;
+$color-button-remove: #F44336;
+
 // Responsive breakpoints
 $breakpoint-mobile: 480px;
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 1024px;
+$font-size-mobile: 14px;
+$font-size-tablet: 16px;
+$font-size-desktop: 18px;
 
-// Mixin for responsive typography
-@mixin responsive-font($size-mobile, $size-tablet, $size-desktop) {
-  font-size: $size-mobile;
+// Mixin para la tipografía responsive
+@mixin responsive-font {
+  font-size: $font-size-mobile;
 
   @media (min-width: $breakpoint-tablet) {
-    font-size: $size-tablet;
+    font-size: $font-size-tablet;
   }
 
   @media (min-width: $breakpoint-desktop) {
-    font-size: $size-desktop;
+    font-size: $font-size-desktop;
   }
 }
 
-// Updated sidebar and main content styles
+@mixin responsive-font($color-text) {
+  color: $color-text;
+  @include responsive-font;
+}
+
+.html,
+.body {
+  background-color: $color-background-dark;
+  color: $color-text-light;
+}
+
+
+// Sidebar
 .sidebar {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-    padding-top: 48px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    transition: all 0.3s;
-  }
-  
-  .main-content {
-    margin-left: 280px;
-    transition: margin-left 0.3s;
-  
-    &.full-width {
-      margin-left: 0;
-    }
+  background-color: $color-grey-15;
+  color: $color-text-light;
+  width: 280px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -280px;
+  z-index: 100;
+  padding-top: 48px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: left 0.3s;
 }
 
+#sidebarToggle {
+  position: fixed;
+  z-index: 102;
+  left: 10px;
+  top: 10px;
+  cursor: pointer;
+}
 
-  #sidebarToggle {
-    position: fixed;
-    z-index: 102; // Above sidebar
-    left: 280px;
-    top: 10px;
-    transition: left 0.3s;
+.textarea-custom-size {
+  resize: none;
+  height: 51px;
+}
+
+.bank-banner {
+  background-color: $color-grey-20;
+
+  .navbar-dark {
+    .navbar-brand {
+      color: $color-green-60;
+
+      &:hover {
+        color: lighten($color-green-60, 10%);
+      }
+    }
   }
-  
+}
+
+.welcome {
+  color: $color-green-60;
+}
+
+// Main Content
+.main-content {
+  margin-left: 0; // Initially no margin
+  transition: margin-left 0.3s;
+  background-color: $color-background-dark;
+  color: $color-text-light;
+
+  .card {
+    background-color: $color-card-background;
+    color: $color-text-light;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+
+    .card-title {
+      color: $color-green-70;
+      font-weight: bold;
+    }
+  }
+}
+
+// Buttons
+.btn {
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-weight: bold;
+
+  &.btn-danger {
+    background-color: $color-button-remove;
+
+    &:hover {
+      background-color: darken($color-button-remove, 10%);
+    }
+  }
+
+  &.btn-success {
+    background-color: $color-button-add;
+
+    &:hover {
+      background-color: darken($color-button-add, 10%);
+    }
+  }
+
+  &.btn-primary {
+    background-color: $color-button-green;
+    color: $color-text-light;
+
+    &:hover {
+      background-color: lighten($color-button-green, 10%);
+    }
+  }
+
+
+}
+
+// Forms
+form {
+
+  input,
+  select,
+  textarea {
+    border-radius: 5px;
+    background-color: $color-input-background;
+    color: $color-text-light;
+    border: 1px solid $color-input-border;
+    padding: 10px;
+
+    &:focus {
+      outline: none;
+      border-color: $color-green-70;
+    }
+  }
+
+
+}
+
+// Navigation Bar
+.navbar {
+  background-color: $color-grey-20;
+
+  .navbar-brand,
+  .navbar-dark .navbar-toggler {
+    color: $color-text-light;
+    font-size: 1.5em;
+
+    &:hover {
+      color: lighten($color-green-60, 10%);
+    }
+  }
+}
+
+.offcanvas-start {
+  background-color: $color-grey-15; // Sidebar background
+  color: $color-absolute-white; // Sidebar text color
+}
+
+// Responsive Design
+
+@media (max-width: $breakpoint-tablet) {
+  .sidebar {
+    left: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .sidebar {
+    left: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+
+  }
+}
+
+// Animations and Transitions
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.element-animate {
+  animation: fadeIn 0.3s ease-in-out;
+  background-color: $color-background-dark;
+  color: $color-text-light;
+}

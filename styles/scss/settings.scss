@@ -1,0 +1,97 @@
+// Import the main style definitions
+@import 'styles';
+
+@mixin responsive-font($color-text) {
+    color: $color-text;
+
+    font-size: $font-size-mobile;
+
+    @media (min-width: $breakpoint-tablet) {
+        font-size: $font-size-tablet;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+        font-size: $font-size-desktop;
+    }
+}
+
+body {
+    @include responsive-font($color-text-light);
+    background-color: $color-background-dark;
+    color: $color-text-light;
+    font-family: sans-serif;
+}
+
+// Navbar styling
+.navbar {
+    background-color: $color-grey-20; 
+}
+
+// Sidebar styling
+.offcanvas-start {
+    background-color: $color-grey-15;
+    color: $color-absolute-white;
+}
+
+// card styles for any cards in the settings page
+.card {
+    background-color: $color-card-background;
+    color: $color-text-light;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+
+    .card-title {
+        color: $color-green-70;
+        font-weight: bold;
+    }
+}
+
+.btn {
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-weight: bold;
+
+    &.btn-danger {
+        background-color: $color-button-remove;
+
+        &:hover {
+            background-color: darken($color-button-remove, 10%);
+        }
+    }
+
+    &.btn-success {
+        background-color: $color-button-add;
+
+        &:hover {
+            background-color: darken($color-button-add, 10%);
+        }
+    }
+
+    &.btn-primary {
+        background-color: $color-button-green;
+        color: $color-text-light;
+
+        &:hover {
+            background-color: lighten($color-button-green, 10%);
+        }
+    }
+
+
+}
+
+input,
+select,
+textarea {
+    border-radius: 5px;
+    background-color: $color-input-background;
+    color: $color-text-light;
+    border: 1px solid $color-input-border;
+    padding: 10px;
+
+    &:focus {
+        outline: none;
+        border-color: $color-green-70;
+    }
+}

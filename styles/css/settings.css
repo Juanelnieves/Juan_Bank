@@ -165,3 +165,85 @@ form textarea:focus {
   background-color: #121212;
   color: #FFFFFF;
 }
+
+body {
+  color: #FFFFFF;
+  font-size: 14px;
+  background-color: #121212;
+  color: #FFFFFF;
+  font-family: sans-serif;
+}
+@media (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+}
+@media (min-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+.navbar {
+  background-color: #333333;
+}
+
+.offcanvas-start {
+  background-color: #262626;
+  color: #FFF;
+}
+
+.card {
+  background-color: #333;
+  color: #FFFFFF;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.card .card-title {
+  color: #DBFF66;
+  font-weight: bold;
+}
+
+.btn {
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-weight: bold;
+}
+.btn.btn-danger {
+  background-color: #F44336;
+}
+.btn.btn-danger:hover {
+  background-color: #ea1c0d;
+}
+.btn.btn-success {
+  background-color: #4CAF50;
+}
+.btn.btn-success:hover {
+  background-color: #3d8b40;
+}
+.btn.btn-primary {
+  background-color: #CAFF33;
+  color: #FFFFFF;
+}
+.btn.btn-primary:hover {
+  background-color: #d7ff66;
+}
+
+input,
+select,
+textarea {
+  border-radius: 5px;
+  background-color: #1E1E1E;
+  color: #FFFFFF;
+  border: 1px solid #333333;
+  padding: 10px;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #DBFF66;
+}
