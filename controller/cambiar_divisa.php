@@ -42,10 +42,6 @@ function getConvertedBalance($userId, $currency) {
     if ($row = $result->fetch_assoc()) {
         $currentBalance = $row['saldo'];
         $currentCurrency = $row['moneda_preferida'];
-
-        // Aquí deberías añadir la lógica para convertir el saldo a la nueva moneda
-        // Esto podría requerir una API de conversión de divisas o una lógica personalizada
-        // basada en tasas de cambio almacenadas en tu base de datos
         $convertedBalance = convertCurrency($currentBalance, $currentCurrency, $currency);
 
         return $convertedBalance;
@@ -54,11 +50,8 @@ function getConvertedBalance($userId, $currency) {
     }
 }
 
-// Ejemplo de una función de conversión de divisas (necesitarás implementar la lógica real)
 function convertCurrency($amount, $fromCurrency, $toCurrency) {
-    // Aquí deberías implementar la conversión de divisas
-    // Por ejemplo, hacer una solicitud a una API de conversión de divisas
-    // o utilizar tasas de cambio almacenadas en tu base de datos
+    
     return $amount; // Valor de ejemplo
 }
 ?>
